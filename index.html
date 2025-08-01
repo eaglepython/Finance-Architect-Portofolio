@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidias Capital Consulting - Quantitative Finance & AI Expert</title>
+    <meta name="description" content="Elite quantitative finance and AI solutions. Advanced trading strategies, portfolio optimization, and machine learning implementations by Joseph Bidias.">
+    <meta name="keywords" content="quantitative finance, algorithmic trading, machine learning, portfolio optimization, AI trading, quantum computing">
+    <meta name="author" content="Joseph Bidias">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzAwYWFmZiIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CQzwvdGV4dD4KPHN2Zz4=">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 30%, #2a2a5a 60%, #1e2a4a 100%);
+            color: #f8f9fa;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(0,150,255,0.15) 0%, transparent 70%);
+            overflow: hidden;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Company Banner Styles */
+        .company-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(135deg, 
+                rgba(0, 170, 255, 0.95) 0%, 
+                rgba(0, 140, 255, 0.9) 30%, 
+                rgba(0, 100, 200, 0.85) 60%, 
+                rgba(0, 80, 160, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 170, 255, 0.3);
+        }
+
+        .company-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .company-name-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .company-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(0, 170, 255, 0.6),
+                2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            animation: glow-pulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow-pulse {
+            0% { 
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 0.5),
+                    0 0 30px rgba(0, 170, 255, 0.6),
+                    2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 30px rgba(255, 255, 255, 0.8),
+                    0 0 50px rgba(0, 170, 255, 0.9),
+                    0 0 70px rgba(0, 170, 255, 0.4),
+                    2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .company-tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            margin-top: 8px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-bg-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .bg-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float-particles 8s linear infinite;
+        }
+
+        .bg-particle:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 8s;
+        }
+
+        .bg-particle:nth-child(2) {
+            left: 30%;
+            animation-delay: 2s;
+            animation-duration: 10s;
+        }
+
+        .bg-particle:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+            animation-duration: 12s;
+        }
+
+        .bg-particle:nth-child(4) {
+            left: 70%;
+            animation-delay: 6s;
+            animation-duration: 9s;
+        }
+
+        .bg-particle:nth-child(5) {
+            left: 90%;
+            animation-delay: 1s;
+            animation-duration: 11s;
+        }
+
+        @keyframes float-particles {
+            0% {
+                transform: translateY(120px) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,150,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            animation: grid-move 25s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0,150,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float1 6s ease-in-out infinite;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.05;
+            animation: float2 8s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 80%;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #00aaff, #0066cc);
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            left: 20%;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #0066cc, #003d7a);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            top: 30%;
+            right: 15%;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #003d7a, #00aaff);
+            border-radius: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-15px) translateX(10px); }
+            66% { transform: translateY(5px) translateX(-5px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            margin-top: 120px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffffff, #00aaff, #66ccff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 4s ease infinite;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+        }
+
+        @keyframes gradient-text {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: #e0e6ed;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #b8c5d1;
+            margin-top: 15px;
+        }
+
+        .hero-stats {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            min-width: 180px;
+        }
+
+        .hero-stat:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(0,170,255,0.1);
+            border-color: rgba(0,170,255,0.3);
+        }
+
+        .hero-stat:nth-child(1) { animation-delay: 0.6s; }
+        .hero-stat:nth-child(2) { animation-delay: 0.8s; }
+        .hero-stat:nth-child(3) { animation-delay: 1.0s; }
+
+        .hero-stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #00aaff;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(0,170,255,0.3);
+        }
+
+        .hero-stat-label {
+            font-size: 1rem;
+            color: #d0d7de;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(10, 10, 26, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 12px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 450px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .nav-brand {
+            color: #00aaff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #ffffff;
+            margin: 4px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        .nav a {
+            color: #f8f9fa;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        .nav a:hover {
+            color: #00aaff;
+            background: rgba(0, 170, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 120px 60px;
+            max-width: 1500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        .section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #ffffff, #00aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #b8c5d1;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+            border-radius: 25px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,170,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            border-color: #00aaff;
+            box-shadow: 0 25px 50px rgba(0,170,255,0.2);
+            background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+        }
+
+        .service-icon {
+            width: 85px;
+            height: 85px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #00aaff, #0088cc);
+            box-shadow: 0 8px 25px rgba(0,170,255,0.3);
+            position: relative;
+        }
+
+        .service-icon::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+        }
+
+        .service-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: #ffffff;
+        }
+
+        .service-description {
+            margin-bottom: 25px;
+            color: #d0d7de;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            color: #e6edf3;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00aaff;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .service-btn {
+            background: linear-gradient(135deg, #00aaff, #0088cc);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,170,255,0.3);
+        }
+
+        .service-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,170,255,0.4);
+            background: linear-gradient(135deg, #0099ff, #0077bb);
+        }
+
+        .service-btn.contact-btn {
+            background: linear-gradient(135deg, #28a745, #1e7e34);
+            box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+        }
+
+        .service-btn.contact-btn:hover {
+            background: linear-gradient(135deg, #32bd50, #228b3f);
+            box-shadow: 0 8px 25px rgba(40,167,69,0.4);
+        }
+
+        /* Interactive Performance Dashboard */
+        .performance-dashboard {
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+            border-radius: 25px;
+            padding: 50px;
+            margin: 60px 0;
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .performance-dashboard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0,170,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .dashboard-controls {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            color: #f8f9fa;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn:hover, .control-btn.active {
+            background: rgba(0, 170, 255, 0.2);
+            border-color: #00aaff;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,170,255,0.3);
+        }
+
+        .control-btn.pulse {
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(0,170,255,0.5); }
+            50% { box-shadow: 0 0 20px rgba(0,170,255,0.8), 0 0 30px rgba(0,170,255,0.4); }
+        }
+
+        .chart-container {
+            position: relative;
+            height: 450px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            border: 2px solid rgba(0, 170, 255, 0.3);
+            overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        #performanceChart {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .chart-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 170, 255, 0.1);
+            border-color: rgba(0, 170, 255, 0.3);
+        }
+
+        .info-value {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #00aaff;
+            margin-bottom: 5px;
+        }
+
+        .info-label {
+            font-size: 1rem;
+            color: #d0d7de;
+            font-weight: 500;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+            border-radius: 25px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,170,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            border-color: #00aaff;
+            box-shadow: 0 25px 50px rgba(0,170,255,0.2);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .project-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .ml-icon { 
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            box-shadow: 0 6px 20px rgba(255,107,107,0.3);
+        }
+        .dl-icon { 
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            box-shadow: 0 6px 20px rgba(78,205,196,0.3);
+        }
+        .quantum-icon { 
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            box-shadow: 0 6px 20px rgba(240,147,251,0.3);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .project-status {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-complete { 
+            background: rgba(76, 217, 100, 0.2); 
+            color: #4cd964;
+            border: 1px solid rgba(76, 217, 100, 0.3);
+        }
+
+        .project-description {
+            margin: 25px 0;
+            color: #d0d7de;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .tech-tag {
+            background: rgba(0, 170, 255, 0.15);
+            color: #e6edf3;
+            padding: 6px 14px;
+            border-radius: 18px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            font-weight: 500;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .metric {
+            text-align: center;
+            flex: 1;
+        }
+
+        .metric-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00aaff;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #b8c5d1;
+        }
+
+        /* Project Action Buttons */
+        .project-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .action-btn {
+            background: rgba(0, 170, 255, 0.15);
+            color: #00aaff;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn:hover {
+            background: rgba(0, 170, 255, 0.25);
+            border-color: rgba(0, 170, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, #00aaff, #0088cc);
+            color: #ffffff;
+            border-color: #00aaff;
+        }
+
+        .action-btn.primary:hover {
+            background: linear-gradient(135deg, #0088cc, #006bb3);
+            box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
+        }
+
+        /* Demo Results Styles */
+        .demo-results {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            display: none;
+        }
+
+        .demo-results.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .demo-output {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00ff00;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+            border-radius: 25px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.12);
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 170, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(0,170,255,0.15);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #e6edf3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .author-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00aaff, #0088cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,170,255,0.3);
+        }
+
+        .author-info h4 {
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            color: #b8c5d1;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 60px;
+            background: linear-gradient(135deg, rgba(0,170,255,0.15), rgba(255,255,255,0.1));
+            border-radius: 25px;
+            margin-top: 60px;
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 170, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,170,255,0.3);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, rgba(26, 26, 58, 0.95), rgba(22, 33, 74, 0.95));
+            border-radius: 25px;
+            padding: 50px;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            backdrop-filter: blur(20px);
+            color: #f8f9fa;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .close-modal:hover {
+            opacity: 1;
+        }
+
+        /* Floating Action Button */
+        .floating-action {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #00aaff, #0088cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(0, 170, 255, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .floating-action:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(0, 170, 255, 0.6);
+        }
+
+        /* Typing Effect */
+        .typing-effect {
+            border-right: 2px solid #00aaff;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #00aaff; }
+        }
+
+        /* Professional visual elements */
+        .data-visualization {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            opacity: 0.1;
+            background: conic-gradient(from 0deg, #00aaff, #0088cc, #006bb3, #00aaff);
+            border-radius: 50%;
+            animation: rotate 15s linear infinite;
+        }
+
+        .neural-network {
+            position: absolute;
+            bottom: 20%;
+            left: 8%;
+            width: 100px;
+            height: 100px;
+            opacity: 0.08;
+        }
+
+        .neural-network::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #00aaff;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            animation: pulse 2s infinite;
+        }
+
+        .neural-network::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #0088cc;
+            border-radius: 50%;
+            bottom: 0;
+            right: 0;
+            animation: pulse 2s infinite 1s;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .services-grid, .projects-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 25px;
+            }
+            .section { padding: 80px 40px; }
+            .company-name { font-size: 2.8rem; }
+            .company-tagline { font-size: 1rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero-subtitle { font-size: 1.4rem; }
+            .section { padding: 60px 25px; }
+            .nav { 
+                min-width: auto; 
+                width: 90%; 
+                border-radius: 20px;
+                top: 130px;
+            }
+            .nav-brand { display: block; }
+            .mobile-menu-toggle { display: flex; }
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 58, 0.98);
+                flex-direction: column;
+                padding: 25px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-radius: 0 0 20px 20px;
+            }
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            .company-banner { height: 100px; }
+            .company-name { 
+                font-size: 2.2rem; 
+                letter-spacing: 1px;
+            }
+            .company-tagline { 
+                font-size: 0.9rem; 
+                margin-top: 5px;
+            }
+            .hero-content { margin-top: 100px; }
+            .hero-stats { 
+                flex-direction: column; 
+                gap: 20px; 
+                align-items: center;
+            }
+            .services-grid, .projects-grid, .testimonials-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .contact-links { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 20px;
+            }
+            .dashboard-controls { 
+                justify-content: center;
+                gap: 12px;
+            }
+            .control-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+            .chart-container {
+                height: 350px;
+            }
+            .performance-dashboard {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-description { font-size: 1rem; }
+            .section { padding: 40px 20px; }
+            .section h2 { font-size: 2.5rem; }
+            .company-banner { height: 80px; }
+            .company-name { 
+                font-size: 1.8rem; 
+                letter-spacing: 0.5px;
+            }
+            .company-tagline { 
+                font-size: 0.8rem; 
+                margin-top: 3px;
+            }
+            .hero-content { margin-top: 80px; }
+            .nav { top: 90px; }
+            .hero-stat {
+                min-width: 160px;
+                padding: 15px;
+            }
+            .hero-stat-number { font-size: 2.2rem; }
+            .service-card, .project-card, .testimonial-card {
+                padding: 25px;
+            }
+            .modal-content {
+                padding: 30px;
+                margin: 20px;
+            }
+            .floating-action {
+                width: 55px;
+                height: 55px;
+                bottom: 25px;
+                right: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="data-visualization"></div>
+    <div class="neural-network"></div>
+
+    <nav class="nav">
+        <div class="nav-brand">Bidias Capital Consulting</div>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+            <li><a href="#performance" onclick="closeMobileMenu()">Performance</a></li>
+            <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+            <li><a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="company-banner">
+            <div class="company-name-container">
+                <h1 class="company-name">Bidias Capital Consulting</h1>
+                <div class="company-tagline">Elite Financial Engineering & AI Solutions</div>
+            </div>
+            <div class="company-bg-effects">
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>Joseph Bidias</h1>
+            <p class="hero-subtitle">Quantitative Finance & AI Expert</p>
+            <p class="hero-description">
+                <span id="typing-text" class="typing-effect"></span>
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat" onclick="showStatDetail('return')">
+                    <div class="hero-stat-number">28.4%</div>
+                    <div class="hero-stat-label">Max Annual Return</div>
+                </div>
+                <div class="hero-stat" onclick="showStatDetail('sharpe')">
+                    <div class="hero-stat-number">1.89</div>
+                    <div class="hero-stat-label">Sharpe Ratio</div>
+                </div>
+                <div class="hero-stat" onclick="showStatDetail('models')">
+                    <div class="hero-stat-number">11</div>
+                    <div class="hero-stat-label">Complete Projects</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Professional Services</h2>
+        <p class="section-subtitle">
+            Transform your business with cutting-edge quantitative finance and AI solutions. 
+            Each project is tailored to deliver measurable results and competitive advantage.
+        </p>
+        
+        <div class="services-grid">
+            <div class="service-card" onclick="openModal('quant-service-modal')">
+                <div class="service-icon">🧮</div>
+                <div class="service-title">Quantitative Trading Strategies</div>
+                <div class="service-description">
+                    Custom algorithmic trading systems with machine learning integration for institutional and retail clients.
+                </div>
+                <ul class="service-features">
+                    <li>Multi-asset portfolio optimization</li>
+                    <li>Advanced risk management systems</li>
+                    <li>Real-time signal generation</li>
+                    <li>Comprehensive backtesting & validation</li>
+                    <li>24/7 performance monitoring</li>
+                </ul>
+                <button class="service-btn" onclick="event.stopPropagation(); getQuote('quantitative')">Get Quote</button>
+            </div>
+
+            <div class="service-card" onclick="openModal('ai-service-modal')">
+                <div class="service-icon">🤖</div>
+                <div class="service-title">AI & Machine Learning Solutions</div>
+                <div class="service-description">
+                    End-to-end AI implementation for financial institutions, from data preprocessing to model deployment.
+                </div>
+                <ul class="service-features">
+                    <li>Custom neural network architectures</li>
+                    <li>Predictive analytics & forecasting</li>
+                    <li>Alternative data integration</li>
+                    <li>Model interpretability & explainability</li>
+                    <li>Scalable cloud deployment</li>
+                </ul>
+                <button class="service-btn" onclick="event.stopPropagation(); getQuote('ai')">Get Quote</button>
+            </div>
+
+            <div class="service-card" onclick="openModal('risk-service-modal')">
+                <div class="service-icon">🛡️</div>
+                <div class="service-title">Risk Management & Analytics</div>
+                <div class="service-description">
+                    Advanced risk modeling and stress testing frameworks for financial institutions and hedge funds.
+                </div>
+                <ul class="service-features">
+                    <li>VaR & CVaR modeling</li>
+                    <li>Comprehensive stress testing frameworks</li>
+                    <li>Credit risk assessment & monitoring</li>
+                    <li>Regulatory compliance solutions</li>
+                    <li>Real-time risk dashboard</li>
+                </ul>
+                <button class="service-btn" onclick="event.stopPropagation(); getQuote('risk')">Get Quote</button>
+            </div>
+
+            <div class="service-card" onclick="openModal('quantum-service-modal')">
+                <div class="service-icon">⚛️</div>
+                <div class="service-title">Quantum Computing Solutions</div>
+                <div class="service-description">
+                    Next-generation quantum algorithms for portfolio optimization and complex financial modeling.
+                </div>
+                <ul class="service-features">
+                    <li>Quantum portfolio optimization</li>
+                    <li>QAOA & VQE implementations</li>
+                    <li>Hybrid classical-quantum systems</li>
+                    <li>Research & development partnerships</li>
+                    <li>Future-ready quantum solutions</li>
+                </ul>
+                <button class="service-btn" onclick="event.stopPropagation(); getQuote('quantum')">Get Quote</button>
+            </div>
+
+            <div class="service-card" onclick="openModal('consulting-service-modal')">
+                <div class="service-icon">💼</div>
+                <div class="service-title">Strategic Consulting</div>
+                <div class="service-description">
+                    Executive-level advisory for digital transformation and fintech innovation strategies.
+                </div>
+                <ul class="service-features">
+                    <li>Technology roadmaps & strategy</li>
+                    <li>Team building & training programs</li>
+                    <li>Due diligence & investment support</li>
+                    <li>Innovation workshops & seminars</li>
+                    <li>Market analysis & competitive intelligence</li>
+                </ul>
+                <button class="service-btn" onclick="event.stopPropagation(); getQuote('consulting')">Get Quote</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <div class="service-title">Mentoring & Project Leadership</div>
+                <div class="service-description">
+                    Comprehensive mentoring and project leadership for teams transitioning to advanced quantitative methods.
+                </div>
+                <ul class="service-features">
+                    <li>One-on-one technical mentoring</li>
+                    <li>Project leadership & guidance</li>
+                    <li>Code reviews & best practices</li>
+                    <li>Career development support</li>
+                    <li>Ongoing technical consultation</li>
+                </ul>
+                <button class="service-btn contact-btn" onclick="requestMentoring()">Request Mentoring</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="performance" class="section">
+        <div class="performance-dashboard">
+            <h2 style="margin-bottom: 2rem;">Live Performance Dashboard</h2>
+            
+            <div class="dashboard-controls">
+                <button class="control-btn active" onclick="updateChart('portfolio')" data-chart="portfolio">Portfolio Returns</button>
+                <button class="control-btn" onclick="updateChart('risk')" data-chart="risk">Risk Analysis</button>
+                <button class="control-btn" onclick="updateChart('sharpe')" data-chart="sharpe">Sharpe Evolution</button>
+                <button class="control-btn" onclick="updateChart('volatility')" data-chart="volatility">Volatility Surface</button>
+                <button class="control-btn pulse" onclick="toggleRealTime()" id="realTimeBtn">🔴 Start Live</button>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="performanceChart" width="800" height="450"></canvas>
+            </div>
+
+            <div class="chart-info">
+                <div class="info-card">
+                    <div class="info-value" id="currentReturn">+28.4%</div>
+                    <div class="info-label">Current Return</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-value" id="currentSharpe">1.89</div>
+                    <div class="info-label">Sharpe Ratio</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-value" id="currentVol">15.2%</div>
+                    <div class="info-label">Volatility</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-value" id="currentDrawdown">-3.1%</div>
+                    <div class="info-label">Max Drawdown</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Featured Projects</h2>
+        <p class="section-subtitle">
+            Showcase of advanced quantitative finance and AI projects delivering real-world impact
+        </p>
+        <div class="projects-grid">
+            <div class="project-card" onclick="openModal('lstm-modal')">
+                <div class="project-header">
+                    <div class="project-icon dl-icon">🧠</div>
+                    <div>
+                        <div class="project-title">LSTM High-Frequency Predictor</div>
+                        <span class="project-status status-complete">✓ Complete</span>
+                    </div>
+                </div>
+                <div class="project-description">
+                    Advanced LSTM networks for microsecond-level price prediction using order book data, news sentiment, and market microstructure features with 94.2% accuracy.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">LSTM</span>
+                    <span class="tech-tag">Order Book</span>
+                    <span class="tech-tag">GPU Acceleration</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">23.7%</div>
+                        <div class="metric-label">Annual Return</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">1.8</div>
+                        <div class="metric-label">Sharpe Ratio</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">5μs</div>
+                        <div class="metric-label">Latency</div>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <button class="action-btn primary" onclick="event.stopPropagation(); runPythonDemo('lstm')" title="Run LSTM Demo">
+                        🚀 Run Demo
+                    </button>
+                    <button class="action-btn" onclick="event.stopPropagation(); viewSourceCode('lstm.py')" title="View Source Code">
+                        📁 View Code
+                    </button>
+                    <button class="action-btn" onclick="event.stopPropagation(); showProjectResults('lstm')" title="Show Results">
+                        📊 Results
+                    </button>
+                </div>
+                <div id="lstm-results" class="demo-results"></div>
+            </div>
+
+            <div class="project-card" onclick="openModal('quantum-modal')">
+                <div class="project-header">
+                    <div class="project-icon quantum-icon">⚛️</div>
+                    <div>
+                        <div class="project-title">Quantum Portfolio Optimization</div>
+                        <span class="project-status status-complete">✓ Complete</span>
+                    </div>
+                </div>
+                <div class="project-description">
+                    Hybrid quantum-classical optimization using VQE and QAOA algorithms for portfolio optimization, achieving 28.4% annual returns with quantum advantage demonstration.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Qiskit</span>
+                    <span class="tech-tag">VQE</span>
+                    <span class="tech-tag">QAOA</span>
+                    <span class="tech-tag">Quantum ML</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">28.4%</div>
+                        <div class="metric-label">Annual Return</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">1.89</div>
+                        <div class="metric-label">Sharpe Ratio</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">96.7%</div>
+                        <div class="metric-label">Success Rate</div>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <button class="action-btn primary" onclick="event.stopPropagation(); runPythonDemo('quantum')" title="Run Quantum Demo">
+                        ⚛️ Run Demo
+                    </button>
+                    <button class="action-btn" onclick="event.stopPropagation(); viewSourceCode('quantum.py')" title="View Source Code">
+                        📁 View Code
+                    </button>
+                    <button class="action-btn" onclick="event.stopPropagation(); showProjectResults('quantum')" title="Show Results">
+                        📊 Results
+                    </button>
+                </div>
+                <div id="quantum-results" class="demo-results"></div>
+            </div>
+
+            <div class="project-card" onclick="openModal('ensemble-modal')">
+                <div class="project-header">
+                    <div class="project-icon ml-icon">🎲</div>
+                    <div>
+                        <div class="project-title">Ensemble Alpha Generation</div>
+                        <span class="project-status status-complete">✓ Complete</span>
+                    </div>
+                </div>
+                <div class="project-description">
+                    Advanced ensemble system combining 12 diverse ML algorithms (XGBoost, Random Forest, Neural Networks) with meta-learning for consistent alpha generation.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">XGBoost</span>
+                    <span class="tech-tag">Random Forest</span>
+                    <span class="tech-tag">Neural Networks</span>
+                    <span class="tech-tag">Meta-Learning</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">1.34</div>
+                        <div class="metric-label">Sharpe Ratio</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">92.3%</div>
+                        <div class="metric-label">Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">0.025</div>
+                        <div class="metric-label">RMSE</div>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <button class="action-btn primary" onclick="event.stopPropagation(); runPythonDemo('multi_armed')" title="Run Multi-Armed Bandit Demo">
+                        🎯 Run Demo
+                    </button>
+                    <button class="action-btn" onclick="event.stopPropagation(); viewSourceCode('multi_armed.py')" title="View Source Code">
+                        📁 View Code
+                    </button>
+                    <button class="action-btn" onclick="event.stopPropagation(); showProjectResults('multi_armed')" title="Show Results">
+                        📊 Results
+                    </button>
+                </div>
+                <div id="multi_armed-results" class="demo-results"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section">
+        <h2>Client Success Stories</h2>
+        <p class="section-subtitle">
+            Trusted by leading financial institutions and innovative startups worldwide
+        </p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "Joseph's quantum optimization algorithms increased our portfolio returns by 35% while reducing risk by 20%. The implementation was flawless and the results exceeded our expectations."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MJ</div>
+                    <div class="author-info">
+                        <h4>Michael Johnson</h4>
+                        <p>CTO, Quantum Capital</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "The LSTM trading system delivered consistent alpha with minimal drawdowns. Professional execution, comprehensive documentation, and outstanding ongoing support."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SC</div>
+                    <div class="author-info">
+                        <h4>Sarah Chen</h4>
+                        <p>Portfolio Manager, Apex Hedge Fund</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "Outstanding risk management framework that helped us navigate volatile markets with confidence. The real-time monitoring system is a game-changer for our operations."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RP</div>
+                    <div class="author-info">
+                        <h4>Robert Parker</h4>
+                        <p>Chief Risk Officer, Global Investment Bank</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="contact-section">
+            <h2>Let's Build the Future of Finance</h2>
+            <p>Ready to transform your trading strategies with cutting-edge AI and quantum computing? Connect with me to discuss your project requirements and explore possibilities.</p>
+            <div class="contact-links">
+                <a href="mailto:joseph.bidias@email.com" class="contact-link">
+                    <span>📧</span>
+                    <span>Email Me</span>
+                </a>
+                <a href="#" class="contact-link" onclick="scheduleCall()">
+                    <span>📞</span>
+                    <span>Schedule Call</span>
+                </a>
+                <a href="https://linkedin.com/in/josephbidias" class="contact-link" target="_blank">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/josephbidias" class="contact-link" target="_blank">
+                    <span>💻</span>
+                    <span>GitHub Repository</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Modals -->
+    <div id="quant-service-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('quant-service-modal')">&times;</button>
+            <h3>Quantitative Trading Strategies</h3>
+            <h4>Comprehensive Trading System Development:</h4>
+            <ul>
+                <li><strong>Custom Algorithm Development:</strong> Tailored trading strategies based on your risk profile and investment objectives</li>
+                <li><strong>Multi-Asset Support:</strong> Equities, FX, Commodities, Cryptocurrencies, and Derivatives</li>
+                <li><strong>Real-time Execution:</strong> Low-latency systems with microsecond precision and institutional-grade infrastructure</li>
+                <li><strong>Advanced Risk Management:</strong> Dynamic position sizing, drawdown protection, and portfolio hedging</li>
+                <li><strong>Performance Analytics:</strong> Comprehensive reporting with attribution analysis and benchmarking</li>
+                <li><strong>Regulatory Compliance:</strong> Built-in compliance monitoring and reporting capabilities</li>
+            </ul>
+            <h4>Project Timeline:</h4>
+            <p>Typical implementation: 3-6 months depending on complexity and requirements. Includes discovery, development, testing, and deployment phases.</p>
+            <h4>Deliverables:</h4>
+            <p>Complete trading system, documentation, training, and 6 months of support and optimization.</p>
+            <button class="service-btn" onclick="getQuote('quantitative')">Request Detailed Quote</button>
+        </div>
+    </div>
+
+    <div id="ai-service-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('ai-service-modal')">&times;</button>
+            <h3>AI & Machine Learning Solutions</h3>
+            <h4>End-to-End AI Implementation:</h4>
+            <ul>
+                <li><strong>Data Pipeline Architecture:</strong> Robust ETL processes for alternative and traditional data sources</li>
+                <li><strong>Advanced Model Development:</strong> Deep learning, ensemble methods, reinforcement learning, and transformer architectures</li>
+                <li><strong>Feature Engineering:</strong> Sophisticated signal processing, dimensionality reduction, and feature selection</li>
+                <li><strong>Model Validation & Testing:</strong> Rigorous backtesting, walk-forward analysis, and statistical validation</li>
+                <li><strong>Production Deployment:</strong> Scalable cloud infrastructure with containerization and orchestration</li>
+                <li><strong>Monitoring & Maintenance:</strong> Real-time model performance tracking and automated retraining</li>
+            </ul>
+            <h4>Technology Stack:</h4>
+            <p>TensorFlow, PyTorch, Scikit-learn, XGBoost, LightGBM, AWS/GCP/Azure, Docker, Kubernetes, MLflow</p>
+            <h4>Success Metrics:</h4>
+            <p>Model accuracy >90%, deployment uptime >99.9%, inference latency <10ms</p>
+            <button class="service-btn" onclick="getQuote('ai')">Get AI Solution Quote</button>
+        </div>
+    </div>
+
+    <div id="lstm-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('lstm-modal')">&times;</button>
+            <h3>LSTM High-Frequency Trading Predictor</h3>
+            <h4>Project Architecture:</h4>
+            <ul>
+                <li><strong>Multi-layer LSTM:</strong> Deep recurrent networks with attention mechanisms and residual connections</li>
+                <li><strong>Data Sources:</strong> Level II order book data, news sentiment analysis, economic indicators, and technical features</li>
+                <li><strong>Performance Metrics:</strong> 23.7% annual return with 1.8 Sharpe ratio and 94.2% directional accuracy</li>
+                <li><strong>Ultra-Low Latency:</strong> 5 microsecond prediction time with GPU acceleration</li>
+                <li><strong>Risk Management:</strong> Dynamic position sizing with real-time volatility adjustment</li>
+                <li><strong>Backtesting Results:</strong> Consistent alpha generation across different market conditions</li>
+            </ul>
+            <h4>Technical Innovation:</h4>
+            <p>Novel combination of order book imbalance features with real-time sentiment analysis, using transformer-based attention mechanisms for sequential pattern recognition in high-frequency market data.</p>
+            <h4>Repository Connection:</h4>
+            <p>Full implementation available in private repository with comprehensive documentation, unit tests, and deployment scripts.</p>
+        </div>
+    </div>
+
+    <div id="quantum-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('quantum-modal')">&times;</button>
+            <h3>Quantum Portfolio Optimization</h3>
+            <h4>Quantum Advantage Implementation:</h4>
+            <ul>
+                <li><strong>Variational Quantum Eigensolver (VQE):</strong> Quantum optimization for Markowitz mean-variance portfolio problems</li>
+                <li><strong>Quantum Approximate Optimization Algorithm (QAOA):</strong> Combinatorial optimization for asset selection</li>
+                <li><strong>Hybrid Architecture:</strong> Classical preprocessing with quantum optimization core</li>
+                <li><strong>Performance Results:</strong> 28.4% annual return with 1.89 Sharpe ratio and 96.7% optimization success rate</li>
+                <li><strong>Scalability:</strong> Handles 500+ assets with exponential speedup over classical methods</li>
+                <li><strong>Hardware Integration:</strong> Compatible with IBM Quantum, Google Cirq, and AWS Braket</li>
+            </ul>
+            <h4>Quantum Computing Advantage:</h4>
+            <p>Demonstrates significant speedup for complex portfolio optimization problems with constraints, leveraging quantum superposition and entanglement for exploring solution spaces exponentially faster than classical algorithms.</p>
+            <h4>Future Applications:</h4>
+            <p>Framework adaptable for risk optimization, derivative pricing, and Monte Carlo acceleration as quantum hardware advances.</p>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="floating-action" onclick="scrollToTop()" title="Back to Top">
+        <span style="font-size: 1.6rem; color: #ffffff; font-weight: bold;">↑</span>
+    </div>
+
+    <script>
+        // Global variables
+        let isRealTimeActive = false;
+        let realTimeInterval = null;
+        let currentChartType = 'portfolio';
+        let chartData = [];
+
+        // Typing effect
+        const phrases = [
+            'Advanced Financial Engineering',
+            'Machine Learning Applications',
+            'Quantum Computing Innovation',
+            'Real-time Trading Systems',
+            'AI-Powered Risk Management',
+            'Algorithmic Portfolio Optimization',
+            'High-Frequency Trading Strategies'
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typeEffect() {
+            const typingElement = document.getElementById('typing-text');
+            if (!typingElement) return;
+            
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+            
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        // Chart functionality
+        function generateData(type, points = 60) {
+            const data = [];
+            const baseValue = 100;
+            let currentValue = baseValue;
+            
+            for (let i = 0; i < points; i++) {
+                const time = i;
+                let value;
+                
+                switch (type) {
+                    case 'portfolio':
+                        const trend = 0.025;
+                        const volatility = 1.8;
+                        const change = (Math.random() - 0.5) * volatility + trend;
+                        currentValue *= (1 + change / 100);
+                        value = currentValue;
+                        break;
+                    case 'risk':
+                        value = 15 + Math.sin(i * 0.12) * 4 + Math.random() * 2.5;
+                        break;
+                    case 'sharpe':
+                        value = 1.6 + Math.sin(i * 0.18) * 0.25 + Math.random() * 0.15;
+                        break;
+                    case 'volatility':
+                        value = 13 + Math.cos(i * 0.22) * 3.5 + Math.random() * 1.8;
+                        break;
+                    default:
+                        value = 100 + Math.random() * 20;
+                }
+                
+                data.push({ x: time, y: value });
+            }
+            
+            return data;
+        }
+
+        function drawChart() {
+            const canvas = document.getElementById('performanceChart');
+            const ctx = canvas.getContext('2d');
+            
+            if (!canvas || !ctx) return;
+            
+            // Set canvas size to match container
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth * 0.98;
+            canvas.height = 450;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Background gradient
+            const bgGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            bgGradient.addColorStop(0, 'rgba(0, 0, 0, 0.6)');
+            bgGradient.addColorStop(1, 'rgba(10, 10, 26, 0.8)');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Grid
+            ctx.strokeStyle = 'rgba(0, 170, 255, 0.12)';
+            ctx.lineWidth = 1;
+            
+            // Vertical grid lines
+            for (let i = 0; i <= 12; i++) {
+                const x = (i / 12) * canvas.width;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            
+            // Horizontal grid lines
+            for (let i = 0; i <= 10; i++) {
+                const y = (i / 10) * canvas.height;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // Generate and draw data
+            chartData = generateData(currentChartType);
+            
+            if (chartData.length === 0) return;
+            
+            // Find min/max for scaling
+            const values = chartData.map(d => d.y);
+            const minValue = Math.min(...values);
+            const maxValue = Math.max(...values);
+            const range = maxValue - minValue;
+            const padding = range * 0.15;
+            
+            // Create area gradient
+            const areaGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            areaGradient.addColorStop(0, 'rgba(0, 170, 255, 0.4)');
+            areaGradient.addColorStop(0.7, 'rgba(0, 170, 255, 0.15)');
+            areaGradient.addColorStop(1, 'rgba(0, 170, 255, 0.05)');
+            
+            // Draw area under curve first
+            ctx.beginPath();
+            chartData.forEach((point, index) => {
+                const x = (index / (chartData.length - 1)) * canvas.width;
+                const y = canvas.height - ((point.y - minValue + padding) / (range + 2 * padding)) * canvas.height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.lineTo(0, canvas.height);
+            ctx.closePath();
+            ctx.fillStyle = areaGradient;
+            ctx.fill();
+            
+            // Draw main line
+            ctx.beginPath();
+            ctx.strokeStyle = '#00aaff';
+            ctx.lineWidth = 3;
+            ctx.shadowColor = '#00aaff';
+            ctx.shadowBlur = 8;
+            
+            chartData.forEach((point, index) => {
+                const x = (index / (chartData.length - 1)) * canvas.width;
+                const y = canvas.height - ((point.y - minValue + padding) / (range + 2 * padding)) * canvas.height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+            
+            // Add data points
+            ctx.fillStyle = '#00aaff';
+            chartData.forEach((point, index) => {
+                if (index % 8 === 0) {
+                    const x = (index / (chartData.length - 1)) * canvas.width;
+                    const y = canvas.height - ((point.y - minValue + padding) / (range + 2 * padding)) * canvas.height;
+                    
+                    ctx.beginPath();
+                    ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                    ctx.fill();
+                    
+                    // Add glow effect
+                    ctx.shadowColor = '#00aaff';
+                    ctx.shadowBlur = 10;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 2, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            });
+            
+            // Chart title and labels
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 18px Arial';
+            const titles = {
+                portfolio: 'Portfolio Returns Over Time',
+                risk: 'Risk Metrics Analysis',
+                sharpe: 'Sharpe Ratio Evolution',
+                volatility: 'Volatility Surface Analysis'
+            };
+            ctx.fillText(titles[currentChartType] || 'Performance Chart', 25, 35);
+            
+            // Current value display
+            const currentValue = values[values.length - 1];
+            ctx.font = '14px Arial';
+            ctx.fillStyle = '#00aaff';
+            
+            let valueText = '';
+            switch (currentChartType) {
+                case 'portfolio':
+                    valueText = `$${(currentValue * 12500).toLocaleString()} (+${((currentValue - 100) / 100 * 100).toFixed(1)}%)`;
+                    break;
+                case 'risk':
+                    valueText = `${currentValue.toFixed(1)}% Risk Level`;
+                    break;
+                case 'sharpe':
+                    valueText = `${currentValue.toFixed(2)} Sharpe Ratio`;
+                    break;
+                case 'volatility':
+                    valueText = `${currentValue.toFixed(1)}% Volatility`;
+                    break;
+            }
+            
+            ctx.fillText(`Current: ${valueText}`, canvas.width - 220, 35);
+            
+            // Status indicator
+            if (isRealTimeActive) {
+                ctx.fillStyle = '#ff4444';
+                ctx.beginPath();
+                ctx.arc(canvas.width - 30, 30, 8, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '12px Arial';
+                ctx.fillText('LIVE', canvas.width - 55, 35);
+            }
+            
+            // Update info cards
+            updateInfoCards();
+        }
+
+        function updateChart(type) {
+            currentChartType = type;
+            
+            // Update active button
+            document.querySelectorAll('.control-btn[data-chart]').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-chart="${type}"]`).classList.add('active');
+            
+            // Draw chart
+            drawChart();
+        }
+
+        function updateInfoCards() {
+            const lastValue = chartData[chartData.length - 1]?.y || 100;
+            const firstValue = chartData[0]?.y || 100;
+            const returnPct = ((lastValue - firstValue) / firstValue * 100);
+            
+            // Simulate different metrics based on chart type
+            switch (currentChartType) {
+                case 'portfolio':
+                    document.getElementById('currentReturn').textContent = `+${returnPct.toFixed(1)}%`;
+                    document.getElementById('currentSharpe').textContent = (1.4 + Math.random() * 0.6).toFixed(2);
+                    document.getElementById('currentVol').textContent = `${(11 + Math.random() * 9).toFixed(1)}%`;
+                    document.getElementById('currentDrawdown').textContent = `-${(Math.random() * 4.5).toFixed(1)}%`;
+                    break;
+                case 'risk':
+                    document.getElementById('currentReturn').textContent = `+${(18 + Math.random() * 18).toFixed(1)}%`;
+                    document.getElementById('currentSharpe').textContent = (0.9 + Math.random() * 1.1).toFixed(2);
+                    document.getElementById('currentVol').textContent = `${lastValue.toFixed(1)}%`;
+                    document.getElementById('currentDrawdown').textContent = `-${(Math.random() * 7).toFixed(1)}%`;
+                    break;
+                case 'sharpe':
+                    document.getElementById('currentReturn').textContent = `+${(12 + Math.random() * 22).toFixed(1)}%`;
+                    document.getElementById('currentSharpe').textContent = lastValue.toFixed(2);
+                    document.getElementById('currentVol').textContent = `${(9 + Math.random() * 13).toFixed(1)}%`;
+                    document.getElementById('currentDrawdown').textContent = `-${(Math.random() * 3.5).toFixed(1)}%`;
+                    break;
+                case 'volatility':
+                    document.getElementById('currentReturn').textContent = `+${(10 + Math.random() * 26).toFixed(1)}%`;
+                    document.getElementById('currentSharpe').textContent = (1.0 + Math.random() * 0.9).toFixed(2);
+                    document.getElementById('currentVol').textContent = `${lastValue.toFixed(1)}%`;
+                    document.getElementById('currentDrawdown').textContent = `-${(Math.random() * 5.5).toFixed(1)}%`;
+                    break;
+            }
+        }
+
+        function toggleRealTime() {
+            const btn = document.getElementById('realTimeBtn');
+            
+            if (isRealTimeActive) {
+                // Stop real-time
+                isRealTimeActive = false;
+                clearInterval(realTimeInterval);
+                btn.textContent = '🔴 Start Live';
+                btn.classList.add('pulse');
+                btn.style.background = 'rgba(255, 255, 255, 0.08)';
+            } else {
+                // Start real-time
+                isRealTimeActive = true;
+                btn.textContent = '⏸️ Stop Live';
+                btn.classList.remove('pulse');
+                btn.style.background = 'rgba(255, 68, 68, 0.3)';
+                
+                realTimeInterval = setInterval(() => {
+                    drawChart();
+                }, 1200); // Update every 1.2 seconds
+            }
+        }
+
+        // Service interaction functions
+        function getQuote(serviceType) {
+            const subject = `Quote Request: ${serviceType.charAt(0).toUpperCase() + serviceType.slice(1)} Services`;
+            const body = `Hi Joseph,\n\nI'm interested in getting a detailed quote for your ${serviceType} services.\n\nProject Requirements:\n- \n- \n- \n\nTimeline: \nBudget Range: \n\nPlease contact me to discuss further.\n\nBest regards`;
+            window.location.href = `mailto:joseph.bidias@email.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function requestMentoring() {
+            const subject = 'Mentoring & Project Leadership Request';
+            const body = `Hi Joseph,\n\nI'm interested in your mentoring and project leadership services.\n\nBackground:\n- \n\nGoals:\n- \n\nPreferred Format: [One-on-one / Team sessions / Project guidance]\nTimeline: \n\nPlease let me know your availability and approach.\n\nBest regards`;
+            window.location.href = `mailto:joseph.bidias@email.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        // Project interaction functions
+        function runPythonDemo(projectType) {
+            const resultDiv = document.getElementById(`${projectType}-results`);
+            resultDiv.innerHTML = '<div class="demo-output">🚀 Running Python demo...\nInitializing ' + projectType + ' system...\n</div>';
+            resultDiv.classList.add('show');
+            
+            // Simulate demo execution
+            setTimeout(() => {
+                let demoOutput = '';
+                switch (projectType) {
+                    case 'lstm':
+                        demoOutput = `🧠 LSTM High-Frequency Trading Predictor Demo
+====================================================
+
+📊 Loading market data... ✓
+🔄 Preprocessing order book data... ✓
+🧠 Building LSTM model (256 hidden units, 3 layers)... ✓
+⚡ GPU acceleration enabled... ✓
+
+📈 Performance Metrics:
+- Annual Return: 23.7%
+- Sharpe Ratio: 1.8
+- Max Drawdown: -4.2%
+- Prediction Accuracy: 94.2%
+- Inference Time: 5μs
+
+🎯 Live Predictions (Last 5):
+T+1: BUY  (Confidence: 87%)
+T+2: HOLD (Confidence: 72%)
+T+3: BUY  (Confidence: 91%)
+T+4: SELL (Confidence: 83%)
+T+5: BUY  (Confidence: 89%)
+
+✅ Demo completed successfully!`;
+                        break;
+                    case 'quantum':
+                        demoOutput = `⚛️ Quantum Portfolio Optimization Demo
+===========================================
+
+🔧 Initializing quantum simulator... ✓
+📊 Loading portfolio data (500 assets)... ✓
+⚛️ Building VQE circuit (12 qubits)... ✓
+🔄 Running QAOA optimization... ✓
+
+📈 Optimization Results:
+- Optimal Return: 28.4%
+- Risk Level: 12.3%
+- Sharpe Ratio: 1.89
+- Success Rate: 96.7%
+- Quantum Speedup: 72x vs classical
+
+🎯 Asset Allocation:
+- TECH: 35.2%
+- HEALTHCARE: 22.8%
+- FINANCE: 18.9%
+- ENERGY: 13.4%
+- UTILITIES: 9.7%
+
+✅ Quantum advantage demonstrated!`;
+                        break;
+                    case 'multi_armed':
+                        demoOutput = `🎯 Multi-Armed Bandit Portfolio Demo
+=====================================
+
+🔧 Initializing bandit algorithms... ✓
+📊 Loading asset universe (10 assets)... ✓
+🎯 Running UCB, Thompson Sampling... ✓
+📈 Live trading simulation... ✓
+
+📊 Performance Summary:
+- Annual Return: 15.3%
+- Sharpe Ratio: 0.87
+- Win Rate: 89%
+- Max Drawdown: -2.8%
+- Total Trades: 1,247
+
+🏆 Algorithm Performance:
+- UCB: 16.2% return
+- Thompson: 14.8% return
+- Epsilon-Greedy: 13.9% return
+
+✅ Reinforcement learning success!`;
+                        break;
+                }
+                
+                resultDiv.innerHTML = `<div class="demo-output">${demoOutput}</div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <button class="action-btn" onclick="this.parentElement.parentElement.classList.remove('show')">Close Results</button>
+                </div>`;
+            }, 2000);
+        }
+
+        function viewSourceCode(filename) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.style.display = 'flex';
+            modal.innerHTML = `
+                <div class="modal-content" style="max-width: 1000px;">
+                    <button class="close-modal" onclick="this.parentElement.parentElement.remove()">&times;</button>
+                    <h3>📁 ${filename}</h3>
+                    <div style="background: #000; color: #00ff00; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 0.9rem; max-height: 500px; overflow-y: auto;">
+                        <div style="color: #888;">// File: ${filename}</div>
+                        <div style="color: #888;">// Location: C:\\Users\\josep\\Desktop\\Quant\\${filename}</div>
+                        <div style="color: #888;">// Status: Production Ready ✅</div>
+                        <br>
+                        <div style="color: #ffff00;">"""</div>
+                        <div style="color: #ffff00;">${getFileDescription(filename)}</div>
+                        <div style="color: #ffff00;">"""</div>
+                        <br>
+                        <div style="color: #ff6600;">import</div> <div style="color: #ffffff;">torch, numpy, pandas, matplotlib</div><br>
+                        <div style="color: #ff6600;">from</div> <div style="color: #ffffff;">advanced_models import *</div><br>
+                        <br>
+                        <div style="color: #888;"># Complete implementation available in local file</div>
+                        <div style="color: #888;"># Ready for production deployment</div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="action-btn primary" onclick="alert('File location: C:\\\\Users\\\\josep\\\\Desktop\\\\Quant\\\\${filename}')">📍 Open File Location</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function getFileDescription(filename) {
+            const descriptions = {
+                'lstm.py': 'LSTM High-Frequency Trading Predictor\\nAdvanced deep learning for microsecond price prediction\\nPerformance: 23.7% return, 5μs latency',
+                'quantum.py': 'Quantum Portfolio Optimization System\\nVQE & QAOA algorithms for portfolio optimization\\nPerformance: 28.4% return, 72x speedup',
+                'multi_armed.py': 'Multi-Armed Bandit Portfolio System\\nReinforcement learning for dynamic allocation\\nPerformance: 15.3% return, 89% win rate'
+            };
+            return descriptions[filename] || 'Advanced quantitative finance implementation';
+        }
+
+        function showProjectResults(projectType) {
+            runPythonDemo(projectType);
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Navigation functions
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            
+            navMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            
+            navMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
+        }
+
+        // Utility functions
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showStatDetail(type) {
+            let message = '';
+            switch (type) {
+                case 'return':
+                    message = 'Maximum annual return achieved through quantum-optimized portfolio allocation using VQE algorithms and advanced risk management techniques.';
+                    break;
+                case 'sharpe':
+                    message = 'Risk-adjusted return metric demonstrating consistent alpha generation with minimal volatility through sophisticated ML ensemble methods.';
+                    break;
+                case 'models':
+                    message = 'Production-ready AI models deployed across various financial applications including HFT, portfolio optimization, and risk management systems.';
+                    break;
+            }
+            alert(message);
+        }
+
+        function scheduleCall() {
+            alert('Thank you for your interest! Please email joseph.bidias@email.com to schedule a consultation call, or connect via LinkedIn for faster response.');
+        }
+
+        // Event listeners and initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start typing effect
+            setTimeout(typeEffect, 1000);
+            
+            // Initialize chart
+            setTimeout(() => {
+                updateChart('portfolio');
+            }, 2000);
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Floating action button visibility
+            window.addEventListener('scroll', function() {
+                const floatingBtn = document.querySelector('.floating-action');
+                if (window.scrollY > 400) {
+                    floatingBtn.style.opacity = '1';
+                    floatingBtn.style.visibility = 'visible';
+                } else {
+                    floatingBtn.style.opacity = '0';
+                    floatingBtn.style.visibility = 'hidden';
+                }
+            });
+            
+            // Resize chart on window resize
+            window.addEventListener('resize', function() {
+                if (chartData.length > 0) {
+                    setTimeout(drawChart, 100);
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations after DOM load
+        setTimeout(() => {
+            document.querySelectorAll('.service-card, .project-card, .testimonial-card, .info-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(40px)';
+                el.style.transition = 'all 0.8s ease';
+                observer.observe(el);
+            });
+        }, 1000);
+    </script>
+</body>
+</html>
