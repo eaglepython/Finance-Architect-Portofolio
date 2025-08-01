@@ -1,0 +1,11 @@
+Multi-Armed Bandit Portfolio Results
+=====================================
+
+Algorithm: Multi-Armed Bandit (UCB)
+Total Return: 6.0%
+Annual Return: 6.0%
+Sharpe Ratio: 0.27
+Volatility: 22.0%
+Final Value: $106,022
+Best Asset: TECH
+Best Allocation: 20.2%

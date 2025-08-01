@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Test</title>
+    <style>
+        body {
+            background: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        canvas {
+            border: 2px solid #00ffff;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            display: block;
+            margin: 20px auto;
+        }
+        button {
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            border: none;
+            padding: 10px 20px;
+            color: #000;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Performance Simulation Test</h1>
+    
+    <div class="controls">
+        <button onclick="updateChart('portfolio')">Portfolio Returns</button>
+        <button onclick="updateChart('risk')">Risk Analysis</button>
+        <button onclick="updateChart('sharpe')">Sharpe Evolution</button>
+        <button onclick="toggleSimulation()">Toggle Simulation</button>
+    </div>
+    
+    <canvas id="performanceChart" width="800" height="400"></canvas>
+    
+    <div id="status" style="text-align: center; margin: 20px; color: #00ffff;"></div>
+    
+    <script>
+        console.log('Chart test script loaded');
+        
+        let simulationInterval = null;
+        let isSimulationRunning = false;
+        let currentChartType = 'portfolio';
+        
+        function updateStatus(message) {
+            const statusEl = document.getElementById('status');
+            if (statusEl) {
+                statusEl.textContent = message;
+            }
+            console.log('Status:', message);
+        }
+        
+        function generateChartData(type, canvas) {
+            console.log('Generating chart data for:', type, 'Canvas size:', canvas.width, 'x', canvas.height);
+            const points = 50;
+            const data = [];
+            
+            for (let i = 0; i < points; i++) {
+                const x = (i / (points - 1)) * canvas.width;
+                let y;
+                
+                switch (type) {
+                    case 'portfolio':
+                        y = 200 + Math.sin(i * 0.2) * 50 + Math.random() * 30 - 15;
+                        break;
+                    case 'risk':
+                        y = 300 + Math.cos(i * 0.15) * 40 + Math.random() * 20 - 10;
+                        break;
+                    case 'sharpe':
+                        y = 250 + Math.sin(i * 0.1) * 80 + Math.random() * 25 - 12;
+                        break;
+                    default:
+                        y = 200 + Math.random() * 100;
+                }
+                
+                data.push({ x, y });
+            }
+            
+            console.log('Generated', data.length, 'data points');
+            return data;
+        }
+        
+        function drawChart(ctx, data, type, canvas) {
+            console.log('Drawing chart:', type);
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Set gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, 'rgba(0, 255, 255, 0.8)');
+            gradient.addColorStop(1, 'rgba(0, 255, 255, 0.1)');
+            
+            // Draw grid lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            
+            // Vertical grid lines
+            for (let i = 0; i <= 10; i++) {
+                const x = (i / 10) * canvas.width;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            
+            // Horizontal grid lines
+            for (let i = 0; i <= 8; i++) {
+                const y = (i / 8) * canvas.height;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // Draw main line
+            ctx.beginPath();
+            ctx.strokeStyle = '#00ffff';
+            ctx.lineWidth = 3;
+            
+            data.forEach((point, index) => {
+                if (index === 0) {
+                    ctx.moveTo(point.x, point.y);
+                } else {
+                    ctx.lineTo(point.x, point.y);
+                }
+            });
+            
+            ctx.stroke();
+            
+            // Fill area under curve
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.lineTo(0, canvas.height);
+            ctx.closePath();
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Add title
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText(getChartLabel(type), 20, 30);
+            
+            console.log('Chart drawn successfully');
+        }
+        
+        function getChartLabel(type) {
+            switch (type) {
+                case 'portfolio': return 'Portfolio Returns Over Time';
+                case 'risk': return 'Risk Metrics Analysis';
+                case 'sharpe': return 'Sharpe Ratio Evolution';
+                default: return 'Performance Chart';
+            }
+        }
+        
+        function updateChart(type) {
+            console.log('Updating chart to:', type);
+            currentChartType = type;
+            
+            const canvas = document.getElementById('performanceChart');
+            if (!canvas) {
+                console.error('Canvas not found!');
+                updateStatus('Error: Canvas not found');
+                return;
+            }
+            
+            const ctx = canvas.getContext('2d');
+            if (!ctx) {
+                console.error('Could not get canvas context!');
+                updateStatus('Error: Could not get canvas context');
+                return;
+            }
+            
+            try {
+                const data = generateChartData(type, canvas);
+                drawChart(ctx, data, type, canvas);
+                updateStatus(`Chart updated: ${getChartLabel(type)}`);
+            } catch (error) {
+                console.error('Error updating chart:', error);
+                updateStatus('Error updating chart: ' + error.message);
+            }
+        }
+        
+        function toggleSimulation() {
+            if (isSimulationRunning) {
+                clearInterval(simulationInterval);
+                isSimulationRunning = false;
+                updateStatus('Simulation stopped');
+            } else {
+                simulationInterval = setInterval(() => {
+                    updateChart(currentChartType);
+                }, 2000);
+                isSimulationRunning = true;
+                updateStatus('Live simulation started - updating every 2 seconds');
+            }
+        }
+        
+        // Initialize
+        setTimeout(() => {
+            console.log('Initializing chart...');
+            updateChart('portfolio');
+        }, 1000);
+    </script>
+</body>
+</html>

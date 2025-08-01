@@ -1,0 +1,8 @@
+Portfolio Demo Results
+=====================
+
+Annual Return: 48.6%
+Sharpe Ratio: 1.01
+Volatility: 48.2%
+Total Days: 366
+Status: Demo Results Generated
