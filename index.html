@@ -31,6 +31,159 @@
             position: relative;
             background: radial-gradient(ellipse at center, rgba(0,150,255,0.15) 0%, transparent 70%);
             overflow: hidden;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Company Banner Styles */
+        .company-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(135deg, 
+                rgba(0, 170, 255, 0.95) 0%, 
+                rgba(0, 140, 255, 0.9) 30%, 
+                rgba(0, 100, 200, 0.85) 60%, 
+                rgba(0, 80, 160, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 170, 255, 0.3);
+        }
+
+        .company-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .company-name-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .company-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(0, 170, 255, 0.6),
+                2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            animation: glow-pulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow-pulse {
+            0% { 
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 0.5),
+                    0 0 30px rgba(0, 170, 255, 0.6),
+                    2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 30px rgba(255, 255, 255, 0.8),
+                    0 0 50px rgba(0, 170, 255, 0.9),
+                    0 0 70px rgba(0, 170, 255, 0.4),
+                    2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .company-tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            margin-top: 8px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-bg-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .bg-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float-particles 8s linear infinite;
+        }
+
+        .bg-particle:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 8s;
+        }
+
+        .bg-particle:nth-child(2) {
+            left: 30%;
+            animation-delay: 2s;
+            animation-duration: 10s;
+        }
+
+        .bg-particle:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+            animation-duration: 12s;
+        }
+
+        .bg-particle:nth-child(4) {
+            left: 70%;
+            animation-delay: 6s;
+            animation-duration: 9s;
+        }
+
+        .bg-particle:nth-child(5) {
+            left: 90%;
+            animation-delay: 1s;
+            animation-duration: 11s;
+        }
+
+        @keyframes float-particles {
+            0% {
+                transform: translateY(120px) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px) scale(0);
+                opacity: 0;
+            }
         }
 
         .hero::before {
@@ -119,6 +272,7 @@
             text-align: center;
             z-index: 10;
             position: relative;
+            margin-top: 120px;
         }
 
         .hero h1 {
@@ -1014,6 +1168,8 @@
                 gap: 25px;
             }
             .section { padding: 80px 40px; }
+            .company-name { font-size: 2.8rem; }
+            .company-tagline { font-size: 1rem; }
         }
 
         @media (max-width: 768px) {
@@ -1024,6 +1180,7 @@
                 min-width: auto; 
                 width: 90%; 
                 border-radius: 20px;
+                top: 130px;
             }
             .nav-brand { display: block; }
             .mobile-menu-toggle { display: flex; }
@@ -1046,6 +1203,16 @@
                 opacity: 1;
                 visibility: visible;
             }
+            .company-banner { height: 100px; }
+            .company-name { 
+                font-size: 2.2rem; 
+                letter-spacing: 1px;
+            }
+            .company-tagline { 
+                font-size: 0.9rem; 
+                margin-top: 5px;
+            }
+            .hero-content { margin-top: 100px; }
             .hero-stats { 
                 flex-direction: column; 
                 gap: 20px; 
@@ -1081,6 +1248,17 @@
             .hero-description { font-size: 1rem; }
             .section { padding: 40px 20px; }
             .section h2 { font-size: 2.5rem; }
+            .company-banner { height: 80px; }
+            .company-name { 
+                font-size: 1.8rem; 
+                letter-spacing: 0.5px;
+            }
+            .company-tagline { 
+                font-size: 0.8rem; 
+                margin-top: 3px;
+            }
+            .hero-content { margin-top: 80px; }
+            .nav { top: 90px; }
             .hero-stat {
                 min-width: 160px;
                 padding: 15px;
@@ -1130,6 +1308,19 @@
     </nav>
 
     <section id="home" class="hero">
+        <div class="company-banner">
+            <div class="company-name-container">
+                <h1 class="company-name">Bidias Capital Consulting</h1>
+                <div class="company-tagline">Elite Financial Engineering & AI Solutions</div>
+            </div>
+            <div class="company-bg-effects">
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+            </div>
+        </div>
         <div class="hero-content">
             <h1>Joseph Bidias</h1>
             <p class="hero-subtitle">Quantitative Finance & AI Expert</p>
