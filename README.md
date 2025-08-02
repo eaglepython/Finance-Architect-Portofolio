@@ -14,7 +14,7 @@
 </div>
 
 ---
-[![Visit Website](https://img.shields.io/badge/🚀%20Visit%20Portfolio%20Website-Live%20Demo-brightgreen?style=for-the-badge&logo=rocket&logoColor=white)](https://bidias-capital-consulting.netlify.app)
+[![Visit Website](https://img.shields.io/badge/🚀%20Visit%20Portfolio%20Website-Live%20Demo-brightgreen?style=for-the-badge&logo=rocket&logoColor=white)](https://bidiascapitalconsulting.netlify.app/)
 ## 🎯 **PROFESSIONAL SERVICES**
 
 <div align="center">
@@ -54,7 +54,7 @@
 [![Performance](https://img.shields.io/badge/Max%20Return-28.4%25-brightgreen?style=for-the-badge&logo=trending-up)](https://bidias-capital-consulting.netlify.app)
 [![Sharpe](https://img.shields.io/badge/Best%20Sharpe-1.89-blue?style=for-the-badge&logo=bar-chart)](https://bidias-capital-consulting.netlify.app)
 [![Accuracy](https://img.shields.io/badge/Accuracy-94.2%25-orange?style=for-the-badge&logo=target)](https://bidias-capital-consulting.netlify.app)
-[![Speed](https://img.shields.io/badge/Speed-5μs-purple?style=for-the-badge&logo=flash)](https://bidias-capital-consulting.netlify.app)
+[![Speed](https://img.shields.io/badge/Speed-5μs-purple?style=for-the-badge&logo=flash)](https://bidiascapitalconsulting.netlify.app/)
 
 </div>
 
@@ -134,7 +134,7 @@
 ✅ **💼 Professional Service Offerings** with detailed specifications  
 ✅ **🏆 Client Success Stories** from leading financial institutions  
 
-[![Visit Website](https://img.shields.io/badge/🚀%20Visit%20Portfolio%20Website-Live%20Demo-brightgreen?style=for-the-badge&logo=rocket&logoColor=white)](https://bidias-capital-consulting.netlify.app)
+[![Visit Website](https://img.shields.io/badge/🚀%20Visit%20Portfolio%20Website-Live%20Demo-brightgreen?style=for-the-badge&logo=rocket&logoColor=white)](https://bidiascapitalconsulting.netlify.app/)
 
 </div>
 
@@ -174,10 +174,10 @@
 - **⚡ High Performance**: Microsecond latency, optimized algorithms
 - **🔬 Cutting-Edge Research**: Quantum computing applications in finance
 
-[![Achievements](https://img.shields.io/badge/Projects-15+-brightgreen?style=for-the-badge&logo=trophy)](https://bidias-capital-consulting.netlify.app)
-[![Performance](https://img.shields.io/badge/Best%20Return-28.4%25-blue?style=for-the-badge&logo=trending-up)](https://bidias-capital-consulting.netlify.app)
-[![Innovation](https://img.shields.io/badge/Quantum-Leader-purple?style=for-the-badge&logo=quantum)](https://bidias-capital-consulting.netlify.app)
-[![Production](https://img.shields.io/badge/Enterprise-Ready-orange?style=for-the-badge&logo=gear)](https://bidias-capital-consulting.netlify.app)
+[![Achievements](https://img.shields.io/badge/Projects-15+-brightgreen?style=for-the-badge&logo=trophy)](https://bidiascapitalconsulting.netlify.app/)
+[![Performance](https://img.shields.io/badge/Best%20Return-28.4%25-blue?style=for-the-badge&logo=trending-up)](https://bidiascapitalconsulting.netlify.app/)
+[![Innovation](https://img.shields.io/badge/Quantum-Leader-purple?style=for-the-badge&logo=quantum)](https://bidiascapitalconsulting.netlify.app/)
+[![Production](https://img.shields.io/badge/Enterprise-Ready-orange?style=for-the-badge&logo=gear)](https://bidiascapitalconsulting.netlify.app/)
 
 </div>
 
@@ -349,9 +349,9 @@ python 01-machine-learning-finance/multi_armed.py  # 🎯 ML Demo
 
 **🌟 Let's build the future of finance together! 🌟**
 
-[![Email](https://img.shields.io/badge/Email-josephbidias%40yahoo.com-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:josephbidias@yahoo.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Professional%20Network-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/josephbidias)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Bidias%20Capital-green?style=for-the-badge&logo=web&logoColor=white)](https://bidias-capital-consulting.netlify.app)
+[![Email](https://img.shields.io/badge/Email-josephbidias%40yahoo.com-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:aiglevision35@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Professional%20Network-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://bidiascapitalconsulting.netlify.app/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Bidias%20Capital-green?style=for-the-badge&logo=web&logoColor=white)](https://bidiascapitalconsulting.netlify.app/)
 
 </div>
 
@@ -371,8 +371,8 @@ python 01-machine-learning-finance/multi_armed.py  # 🎯 ML Demo
 
 **© 2025 Bidias Capital Consulting. All Rights Reserved.**
 
-[![Status](https://img.shields.io/badge/Status-Elite%20Consulting%20Firm-gold?style=flat-square&logo=star)](https://bidias-capital-consulting.netlify.app)
-[![Year](https://img.shields.io/badge/Established-2025-blue?style=flat-square&logo=calendar)](https://bidias-capital-consulting.netlify.app)
-[![Focus](https://img.shields.io/badge/Focus-Institutional%20Clients-green?style=flat-square&logo=building)](https://bidias-capital-consulting.netlify.app)
+[![Status](https://img.shields.io/badge/Status-Elite%20Consulting%20Firm-gold?style=flat-square&logo=star)](https://bidiascapitalconsulting.netlify.app/)
+[![Year](https://img.shields.io/badge/Established-2025-blue?style=flat-square&logo=calendar)](https://bidiascapitalconsulting.netlify.app/)
+[![Focus](https://img.shields.io/badge/Focus-Institutional%20Clients-green?style=flat-square&logo=building)](https://bidiascapitalconsulting.netlify.app/)
 
 </div>
