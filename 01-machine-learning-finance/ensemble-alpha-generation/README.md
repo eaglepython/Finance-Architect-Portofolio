@@ -93,28 +93,35 @@ pip install scikit-learn xgboost lightgbm pandas numpy matplotlib seaborn yfinan
 
 ### Basic Usage
 ```python
-from ensemble_alpha_generation import AlphaEnsemble
 import yfinance as yf
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
 
-# Initialize ensemble
-ensemble = AlphaEnsemble(
-    lookback_window=252,      # 1 year lookback
-    prediction_horizon=21,    # 21-day forward returns
-    alpha_target=0.05        # 5% annual alpha target
-)
-
-# Download and train on market data
+# Download financial data
 data = yf.download('AAPL', period='3y')
-results = ensemble.train(data, symbol='AAPL')
 
-# View performance
-print(f"Sharpe Ratio: {results['performance']['sharpe_ratio']:.3f}")
-print(f"Hit Rate: {results['performance']['hit_rate']:.3f}")
-print(f"R² Score: {results['performance']['r2_score']:.3f}")
+# (You'll need to engineer features for predictive modeling. Here's just an illustration.)
+data['returns'] = data['Adj Close'].pct_change().shift(-21)  # 21-day forward returns
 
-# Generate trading signals
-predictions = results['test_predictions']
-signals = ensemble.generate_trading_signals(predictions, confidence_threshold=0.02)
+# Example: Simple features (typically you would use OHLCV and technical indicators)
+features = data[['Open', 'High', 'Low', 'Close', 'Volume']].shift(1).dropna()
+target = data['returns'].dropna().loc[features.index]
+
+# Train/test split
+split = int(0.8 * len(features))
+X_train, X_test = features.iloc[:split], features.iloc[split:]
+y_train, y_test = target.iloc[:split], target.iloc[split:]
+
+reg = RandomForestRegressor(n_estimators=100)
+reg.fit(X_train, y_train)
+predictions = reg.predict(X_test)
+
+# Generate trading signals (e.g., go long if prediction > threshold)
+confidence_threshold = 0.02
+signals = (predictions > confidence_threshold).astype(int)
+
+print(f"Sample signals: {signals[:10]}")
+
 ```
 
 ## 📊 **Results & Business Impact**
