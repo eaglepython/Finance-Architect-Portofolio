@@ -14,7 +14,7 @@
 </div>
 
 ---
-🌐 Live Website** | Interactive portfolio demo | [🚀 Visit Website](https://bidiascapitalconsulting.netlify.app/) |
+[![Visit Website](https://img.shields.io/badge/🚀%20Visit%20Portfolio%20Website-Live%20Demo-brightgreen?style=for-the-badge&logo=rocket&logoColor=white)](https://bidias-capital-consulting.netlify.app)
 ## 🎯 **PROFESSIONAL SERVICES**
 
 <div align="center">
