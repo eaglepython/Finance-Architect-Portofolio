@@ -14,7 +14,7 @@
 </div>
 
 ---
-
+🌐 Live Website** | Interactive portfolio demo | [🚀 Visit Website](https://bidiascapitalconsulting.netlify.app/) |
 ## 🎯 **PROFESSIONAL SERVICES**
 
 <div align="center">
@@ -219,7 +219,7 @@ python 01-machine-learning-finance/multi_armed.py  # 🎯 ML Demo
 ### **🌐 Live Demo**
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/🌐%20Interactive%20Portfolio-bidias--capital--consulting.netlify.app-brightgreen?style=for-the-badge&logo=netlify&logoColor=white)](https://bidias-capital-consulting.netlify.app)
+[![Live Demo](https://img.shields.io/badge/🌐%20Interactive%20Portfolio-bidias--capital--consulting.netlify.app-brightgreen?style=for-the-badge&logo=netlify&logoColor=white)](https://bidiascapitalconsulting.netlify.app/)
 
 </div>
 
@@ -266,7 +266,7 @@ python 01-machine-learning-finance/multi_armed.py  # 🎯 ML Demo
 | **📚 Documentation** | Setup guides & requirements | [📂 04-documentation/](./04-documentation/) |
 | **📓 Notebooks** | Interactive analysis & research | [📂 05-notebooks/](./05-notebooks/) |
 | **📊 Results** | Performance data & metrics | [📂 06-results/](./06-results/) |
-| **🌐 Live Website** | Interactive portfolio demo | [🚀 Visit Website](https://bidias-capital-consulting.netlify.app) |
+| **🌐 Live Website** | Interactive portfolio demo | [🚀 Visit Website](https://bidiascapitalconsulting.netlify.app/) |
 
 ---
 
