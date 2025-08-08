@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "16"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  command = "echo 'Bidias Capital Consulting - Production Deploy'"
+
+[context.deploy-preview]
+  command = "echo 'Bidias Capital Consulting - Preview Deploy'"

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Visibility Test</title>
+    <style>
+        body {
+            background: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(0,255,255,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #00ffff;
+            margin-bottom: 30px;
+        }
+        .chart-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .chart-btn {
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            border: none;
+            padding: 12px 20px;
+            color: #000;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .chart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,255,255,0.4);
+        }
+        .chart-btn.active {
+            background: linear-gradient(45deg, #ff6600, #cc4400);
+        }
+        #testCanvas {
+            max-width: 100%;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            border: 2px solid rgba(0,255,255,0.3);
+            display: block;
+            margin: 0 auto;
+        }
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            color: #00ffff;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔥 Canvas Visibility Test</h1>
+        
+        <div class="chart-controls">
+            <button class="chart-btn" onclick="drawTestChart()">Draw Test Chart</button>
+            <button class="chart-btn" onclick="drawPortfolioChart()">Portfolio Chart</button>
+            <button class="chart-btn" onclick="clearCanvas()">Clear Canvas</button>
+        </div>
+        
+        <div class="status" id="status">Ready to test canvas</div>
+        
+        <canvas id="testCanvas" width="800" height="400"></canvas>
+        
+        <div class="status">
+            <p>If you can see a canvas with border above, the element is visible.</p>
+            <p>Click "Draw Test Chart" to verify drawing functionality.</p>
+        </div>
+    </div>
+
+    <script>
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+            console.log('Status:', message);
+        }
+
+        function drawTestChart() {
+            const canvas = document.getElementById('testCanvas');
+            if (!canvas) {
+                updateStatus('❌ Canvas not found!');
+                return;
+            }
+
+            const ctx = canvas.getContext('2d');
+            if (!ctx) {
+                updateStatus('❌ Cannot get canvas context!');
+                return;
+            }
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw background
+            ctx.fillStyle = 'rgba(0, 255, 255, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 10; i++) {
+                const x = (i / 10) * canvas.width;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i <= 8; i++) {
+                const y = (i / 8) * canvas.height;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+
+            // Draw test shapes
+            ctx.fillStyle = '#00ffff';
+            ctx.fillRect(50, 50, 100, 100);
+            
+            ctx.fillStyle = '#ff6600';
+            ctx.beginPath();
+            ctx.arc(600, 100, 50, 0, 2 * Math.PI);
+            ctx.fill();
+
+            // Draw text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('CANVAS IS WORKING!', 250, 200);
+            
+            ctx.font = '16px Arial';
+            ctx.fillText('Canvas dimensions: ' + canvas.width + ' x ' + canvas.height, 250, 250);
+
+            updateStatus('✅ Test chart drawn successfully!');
+        }
+
+        function drawPortfolioChart() {
+            const canvas = document.getElementById('testCanvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Generate sample data
+            const points = 50;
+            const data = [];
+            for (let i = 0; i < points; i++) {
+                const x = (i / (points - 1)) * canvas.width;
+                const y = 200 + Math.sin(i * 0.2) * 50 + Math.random() * 30 - 15;
+                data.push({ x, y });
+            }
+
+            // Draw gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, 'rgba(0, 255, 255, 0.3)');
+            gradient.addColorStop(1, 'rgba(0, 255, 255, 0.05)');
+
+            // Draw line
+            ctx.beginPath();
+            ctx.strokeStyle = '#00ffff';
+            ctx.lineWidth = 3;
+            ctx.shadowColor = '#00ffff';
+            ctx.shadowBlur = 10;
+
+            data.forEach((point, index) => {
+                if (index === 0) {
+                    ctx.moveTo(point.x, point.y);
+                } else {
+                    ctx.lineTo(point.x, point.y);
+                }
+            });
+
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // Fill area under curve
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.lineTo(0, canvas.height);
+            ctx.closePath();
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Add data points
+            ctx.fillStyle = '#00ffff';
+            data.forEach((point, index) => {
+                if (index % 5 === 0) {
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 4, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+            });
+
+            // Add labels
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('Portfolio Returns Over Time', 20, 30);
+            
+            ctx.font = '14px Arial';
+            ctx.fillStyle = '#00ffff';
+            ctx.fillText('Current: $1,284,750 (+28.4%)', canvas.width - 200, 30);
+            ctx.fillStyle = '#00ff00';
+            ctx.fillText('+$47,320 (24h)', canvas.width - 200, 50);
+
+            updateStatus('✅ Portfolio chart drawn successfully!');
+        }
+
+        function clearCanvas() {
+            const canvas = document.getElementById('testCanvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            updateStatus('Canvas cleared');
+        }
+
+        // Auto-test on load
+        setTimeout(() => {
+            updateStatus('Testing canvas visibility...');
+            drawTestChart();
+        }, 1000);
+    </script>
+</body>
+</html>
